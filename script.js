@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Mobile Menu Logic ---
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
-  const navLinks = document.querySelectorAll("#mobile-menu a, #desktop-nav a"); // Also close menu on desktop link click if needed
+  const navLinks = document.querySelectorAll("#mobile-menu a, #desktop-nav a");
 
   menuBtn.addEventListener("click", () => {
     const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- NEW: Dynamic Header on Scroll ---
+  // --- Dynamic Header on Scroll ---
   const header = document.querySelector("header");
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10) { // Add class when scrolled more than 10px
@@ -28,19 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- NEW: Scroll Animation Logic ---
-  // Select all elements with the .scroll-animate class
+  // --- Scroll Animation Logic ---
   const animatedElements = document.querySelectorAll(".scroll-animate");
 
-  // Create a new Intersection Observer
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        // If the element is in the viewport
         if (entry.isIntersecting) {
-          // Add the 'is-visible' class to trigger the animation
           entry.target.classList.add("is-visible");
-          // Optional: Stop observing the element once it's visible so the animation only happens once
           observer.unobserve(entry.target);
         }
       });
@@ -50,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  // Observe each animated element
   animatedElements.forEach((element) => {
     observer.observe(element);
   });
