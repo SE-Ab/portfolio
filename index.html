@@ -16,9 +16,9 @@
 
 <body class="bg-background text-foreground">
 
-    <!-- Header -->
+    <!-- Header - Added transition for smooth shadow effect -->
     <header
-        class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300">
         <div class="container mx-auto px-4 flex h-16 items-center justify-between max-w-7xl">
             <a href="#" class="flex items-center space-x-3">
                 <div class="h-10 w-10 rounded-full bg-cyan-600 flex items-center justify-center">
@@ -27,15 +27,15 @@
                 <span class="font-bold text-xl">Abhishek Kumar Singh</span>
             </a>
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-sm font-medium hover:text-primary transition-colors">About</a>
-                <a href="#experience" class="text-sm font-medium hover:text-primary transition-colors">Experience</a>
-                <a href="#projects" class="text-sm font-medium hover:text-primary transition-colors">Projects</a>
-                <a href="#skills" class="text-sm font-medium hover:text-primary transition-colors">Skills</a>
-                <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+            <nav id="desktop-nav" class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-sm font-medium hover:text-primary transition-colors duration-300">About</a>
+                <a href="#experience" class="text-sm font-medium hover:text-primary transition-colors duration-300">Experience</a>
+                <a href="#projects" class="text-sm font-medium hover:text-primary transition-colors duration-300">Projects</a>
+                <a href="#skills" class="text-sm font-medium hover:text-primary transition-colors duration-300">Skills</a>
+                <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors duration-300">Contact</a>
             </nav>
             <a href="mailto:Abhishek22021@gmail.com"
-                class="hidden md:flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-6">
+                class="hidden md:flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-6 hover:scale-105">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="mr-2 h-4 w-4">
@@ -45,7 +45,8 @@
                 Hire Me
             </a>
             <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="md:hidden p-2 rounded-md hover:bg-muted">
+            <button id="menu-btn" class="md:hidden p-2 rounded-md hover:bg-muted" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="sr-only">Open main menu</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="h-6 w-6">
@@ -59,90 +60,49 @@
         <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
             <nav class="flex flex-col space-y-2">
                 <a href="#about" class="block py-2 text-sm font-medium hover:text-primary transition-colors">About</a>
-                <a href="#experience"
-                    class="block py-2 text-sm font-medium hover:text-primary transition-colors">Experience</a>
-                <a href="#projects"
-                    class="block py-2 text-sm font-medium hover:text-primary transition-colors">Projects</a>
+                <a href="#experience" class="block py-2 text-sm font-medium hover:text-primary transition-colors">Experience</a>
+                <a href="#projects" class="block py-2 text-sm font-medium hover:text-primary transition-colors">Projects</a>
                 <a href="#skills" class="block py-2 text-sm font-medium hover:text-primary transition-colors">Skills</a>
-                <a href="#contact"
-                    class="block py-2 text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                <a href="#contact" class="block py-2 text-sm font-medium hover:text-primary transition-colors">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section - Added scroll animations with delays for a staggered effect -->
         <section class="py-24 px-4 lg:py-32">
             <div class="container mx-auto max-w-5xl text-center">
-                <div class="mb-12">
+                <div class="mb-12 scroll-animate">
                     <div
-                        class="h-36 w-36 rounded-full bg-gradient-to-br from-cyan-600 to-lime-500 mx-auto mb-8 flex items-center justify-center shadow-lg">
-                        <span class="text-5xl font-bold text-white"><img class="rounded-full" src="./per.jpg"
-                                alt="personal image"></span>
+                        class="h-36 w-36 rounded-full bg-gradient-to-br from-cyan-600 to-lime-500 mx-auto mb-8 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+                        <img class="rounded-full" src="./per.jpg" alt="Abhishek Kumar Singh">
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6 text-balance leading-tight">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 text-balance leading-tight scroll-animate delay-100">
                         Full Stack Developer &<br />
                         <span class="text-primary">Tech Trainer</span>
                     </h1>
                     <p
-                        class="text-xl md:text-2xl text-muted-foreground mb-10 text-pretty max-w-3xl mx-auto leading-relaxed">
+                        class="text-xl md:text-2xl text-muted-foreground mb-10 text-pretty max-w-3xl mx-auto leading-relaxed scroll-animate delay-200">
                         2+ years of experience delivering scalable web and mobile solutions. Passionate about building
                         AI-powered learning tools and mentoring the next generation of developers.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12 scroll-animate delay-300">
                         <a href="#projects"
-                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 h-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="mr-3 h-5 w-5">
-                                <path d="m18 16 4-4-4-4" />
-                                <path d="m6 8-4 4 4 4" />
-                                <path d="m14.5 4-5 16" />
-                            </svg>
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 h-auto transform hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 h-5 w-5"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>
                             View My Work
                         </a>
                         <a href="#experience"
-                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-10 py-6 h-auto bg-transparent">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="mr-3 h-5 w-5">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-10 py-6 h-auto bg-transparent transform hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 h-5 w-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                             Training Programs
                         </a>
                     </div>
                 </div>
-                <div class="flex flex-wrap justify-center gap-6 text-base text-muted-foreground">
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        Patna, Bihar, India
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        +91 9504983374
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <rect width="20" height="16" x="2" y="4" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
-                        Abhishek22021@gmail.com
-                    </div>
+                <div class="flex flex-wrap justify-center gap-6 text-base text-muted-foreground scroll-animate delay-500">
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>Patna, Bihar, India</div>
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>+91 9504983374</div>
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>Abhishek22021@gmail.com</div>
                 </div>
             </div>
         </section>
@@ -150,383 +110,63 @@
         <!-- About Section -->
         <section id="about" class="py-24 px-4 bg-muted/30">
             <div class="container mx-auto max-w-7xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">About Me</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 scroll-animate">About Me</h2>
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-6">
+                    <div class="space-y-6 scroll-animate">
                         <h3 class="text-3xl font-semibold mb-6">Career Snapshot</h3>
-                        <p class="text-lg text-muted-foreground leading-relaxed">
-                            Full Stack Developer with 2+ years of experience delivering scalable web and mobile
-                            solutions and designing end-to-end technical training curriculums. Created structured
-                            content for C, C++, Java, Python, and DSA including PPTs, course modules, and real-world
-                            projects.
-                        </p>
+                        <p class="text-lg text-muted-foreground leading-relaxed">Full Stack Developer with 2+ years of experience delivering scalable web and mobile solutions and designing end-to-end technical training curriculums. Created structured content for C, C++, Java, Python, and DSA including PPTs, course modules, and real-world projects.</p>
                         <div class="grid grid-cols-2 gap-6 mt-8">
-                            <div class="text-center p-6 bg-card rounded-xl border border-border shadow-sm">
+                            <div class="text-center p-6 bg-card rounded-xl border border-border shadow-sm transform hover:-translate-y-2 transition-transform duration-300 scroll-animate delay-200">
                                 <div class="text-3xl font-bold text-primary mb-2">40%</div>
                                 <div class="text-sm text-muted-foreground font-medium">Reduced Operational Time</div>
                             </div>
-                            <div class="text-center p-6 bg-card rounded-xl border border-border shadow-sm">
+                            <div class="text-center p-6 bg-card rounded-xl border border-border shadow-sm transform hover:-translate-y-2 transition-transform duration-300 scroll-animate delay-300">
                                 <div class="text-3xl font-bold text-primary mb-2">30%</div>
                                 <div class="text-sm text-muted-foreground font-medium">Boosted User Engagement</div>
                             </div>
                         </div>
                     </div>
-                    <div class="space-y-6">
-                        <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                            <div class="flex flex-col space-y-1.5 p-6 pb-4">
-                                <h3 class="flex items-center gap-3 text-xl font-semibold leading-none tracking-tight">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="h-6 w-6 text-primary">
-                                        <path d="m18 16 4-4-4-4" />
-                                        <path d="m6 8-4 4 4 4" />
-                                        <path d="m14.5 4-5 16" />
-                                    </svg>
-                                    Development Focus
-                                </h3>
-                            </div>
-                            <div class="p-6 pt-0">
-                                <p class="text-base text-muted-foreground leading-relaxed">
-                                    Specialized in Java, Spring Boot, Angular, and React Native. Published multiple apps
-                                    on Google Play Store with proven scalability.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                            <div class="flex flex-col space-y-1.5 p-6 pb-4">
-                                <h3 class="flex items-center gap-3 text-xl font-semibold leading-none tracking-tight">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="h-6 w-6 text-primary">
-                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                        <circle cx="9" cy="7" r="4" />
-                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                    </svg>
-                                    Training & Mentorship
-                                </h3>
-                            </div>
-                            <div class="p-6 pt-0">
-                                <p class="text-base text-muted-foreground leading-relaxed">
-                                    Conducted 100+ sessions with 100% positive feedback. Designed complete curriculums
-                                    and mentored students in end-to-end project development.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="space-y-6 scroll-animate delay-200">
+                        <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm transform hover:-translate-y-2 transition-transform duration-300"><div class="flex flex-col space-y-1.5 p-6 pb-4"><h3 class="flex items-center gap-3 text-xl font-semibold leading-none tracking-tight"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>Development Focus</h3></div><div class="p-6 pt-0"><p class="text-base text-muted-foreground leading-relaxed">Specialized in Java, Spring Boot, Angular, and React Native. Published multiple apps on Google Play Store with proven scalability.</p></div></div>
+                        <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm transform hover:-translate-y-2 transition-transform duration-300"><div class="flex flex-col space-y-1.5 p-6 pb-4"><h3 class="flex items-center gap-3 text-xl font-semibold leading-none tracking-tight"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>Training & Mentorship</h3></div><div class="p-6 pt-0"><p class="text-base text-muted-foreground leading-relaxed">Conducted 100+ sessions with 100% positive feedback. Designed complete curriculums and mentored students in end-to-end project development.</p></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- Experience Section - Cards will animate in -->
         <section id="experience" class="py-24 px-4">
             <div class="container mx-auto max-w-5xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Professional Experience</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 scroll-animate">Professional Experience</h2>
                 <div class="space-y-8">
-                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                        <div class="flex flex-col space-y-1.5 p-6 pb-6">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                                <div class="space-y-2">
-                                    <h3 class="text-2xl font-semibold leading-none tracking-tight">Java Full Stack
-                                        Developer</h3>
-                                    <p class="text-lg font-semibold text-primary">Chapterfeed Learning Space Pvt. Ltd.
-                                    </p>
-                                </div>
-                                <span
-                                    class="inline-flex items-center gap-2 rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold w-fit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="h-4 w-4">
-                                        <path d="M8 2v4" />
-                                        <path d="M16 2v4" />
-                                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                                        <path d="M3 10h18" />
-                                    </svg>
-                                    May 2023 – Present
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-0">
-                            <ul class="space-y-4 text-base">
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Delivered 3+
-                                    full-stack platforms for educational clients, increasing user engagement by 30%
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Built &
-                                    optimized RESTful APIs with Spring Boot, reducing average response time by 25%
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Developed
-                                    and deployed 2 Android apps on Google Play Store using React Native
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Automated
-                                    manual workflows, saving 20+ hours/week in team productivity
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                        <div class="flex flex-col space-y-1.5 p-6 pb-6">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                                <div class="space-y-2">
-                                    <h3 class="text-2xl font-semibold leading-none tracking-tight">Part-Time Software
-                                        Trainer</h3>
-                                    <p class="text-lg font-semibold text-primary">Toonscode – Software Training
-                                        Institute</p>
-                                </div>
-                                <span
-                                    class="inline-flex items-center gap-2 rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold w-fit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="h-4 w-4">
-                                        <path d="M8 2v4" />
-                                        <path d="M16 2v4" />
-                                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                                        <path d="M3 10h18" />
-                                    </svg>
-                                    Oct 2024 – Present
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-0">
-                            <ul class="space-y-4 text-base">
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Conducted
-                                    100+ Offline and Online sessions with 100% positive feedback
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Designed
-                                    complete curriculums for C, C++, Java, Python, and DSA
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Mentored
-                                    students in end-to-end project development and deployment
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm scroll-animate transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300"><div class="flex flex-col space-y-1.5 p-6 pb-6"><div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4"><div class="space-y-2"><h3 class="text-2xl font-semibold leading-none tracking-tight">Java Full Stack Developer</h3><p class="text-lg font-semibold text-primary">Chapterfeed Learning Space Pvt. Ltd.</p></div><span class="inline-flex items-center gap-2 rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold w-fit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></svg>May 2023 – Present</span></div></div><div class="p-6 pt-0"><ul class="space-y-4 text-base"><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Delivered 3+ full-stack platforms for educational clients, increasing user engagement by 30%</li><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Built & optimized RESTful APIs with Spring Boot, reducing average response time by 25%</li><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Developed and deployed 2 Android apps on Google Play Store using React Native</li><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Automated manual workflows, saving 20+ hours/week in team productivity</li></ul></div></div>
+                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm scroll-animate delay-200 transform hover:shadow-xl hover:-translate-y-1 transition-all duration-300"><div class="flex flex-col space-y-1.5 p-6 pb-6"><div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4"><div class="space-y-2"><h3 class="text-2xl font-semibold leading-none tracking-tight">Part-Time Software Trainer</h3><p class="text-lg font-semibold text-primary">Toonscode – Software Training Institute</p></div><span class="inline-flex items-center gap-2 rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold w-fit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></svg>Oct 2024 – Present</span></div></div><div class="p-6 pt-0"><ul class="space-y-4 text-base"><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Conducted 100+ Offline and Online sessions with 100% positive feedback</li><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Designed complete curriculums for C, C++, Java, Python, and DSA</li><li class="flex items-start gap-3"><div class="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>Mentored students in end-to-end project development and deployment</li></ul></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section - Cards animate in with a slight delay between them -->
         <section id="projects" class="py-24 px-4 bg-muted/30">
             <div class="container mx-auto max-w-7xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Key Projects</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 scroll-animate">Key Projects</h2>
                 <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
                     <!-- Project Card 1 -->
-                    <div
-                        class="group rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                        <div class="p-6 pb-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <span
-                                    class="inline-flex items-center rounded-md border border-transparent bg-accent text-accent-foreground px-3 py-1 text-xs font-semibold">In
-                                    Development</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="h-6 w-6 text-muted-foreground">
-                                    <path d="m18 16 4-4-4-4" />
-                                    <path d="m6 8-4 4 4 4" />
-                                    <path d="m14.5 4-5 16" />
-                                </svg>
-                            </div>
-                            <h3 class="group-hover:text-primary transition-colors text-xl font-semibold tracking-tight">
-                                Toonscode Learning App</h3>
-                            <p class="text-base text-muted-foreground">EdTech, AI-powered</p>
-                        </div>
-                        <div class="p-6 pt-0 flex-1 flex flex-col">
-                            <p class="text-base text-muted-foreground mb-6 leading-relaxed flex-1">Mobile-first coding
-                                learning platform with AI-driven feedback and real-time code execution across multiple
-                                programming languages.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">React
-                                    Native</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">AI
-                                    Integration</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Multi-language</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="group rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col transform hover:-translate-y-2 scroll-animate"><div class="p-6 pb-4"><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center rounded-md border border-transparent bg-accent text-accent-foreground px-3 py-1 text-xs font-semibold">In Development</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors duration-300"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg></div><h3 class="group-hover:text-primary transition-colors text-xl font-semibold tracking-tight">Toonscode Learning App</h3><p class="text-base text-muted-foreground">EdTech, AI-powered</p></div><div class="p-6 pt-0 flex-1 flex flex-col"><p class="text-base text-muted-foreground mb-6 leading-relaxed flex-1">Mobile-first coding learning platform with AI-driven feedback and real-time code execution across multiple programming languages.</p><div class="flex flex-wrap gap-2 mb-6"><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">React Native</span><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">AI Integration</span><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Multi-language</span></div></div></div>
                     <!-- Project Card 2 -->
-                    <div
-                        class="group rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                        <div class="p-6 pb-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <span
-                                    class="inline-flex items-center rounded-md border border-transparent bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">Live</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="h-6 w-6 text-muted-foreground">
-                                    <path d="M15 3h6v6" />
-                                    <path d="M10 14 21 3" />
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                </svg>
-                            </div>
-                            <h3 class="group-hover:text-primary transition-colors text-xl font-semibold tracking-tight">
-                                Smart Raseed Mobile App</h3>
-                            <p class="text-base text-muted-foreground">Spring Boot & React Native</p>
-                        </div>
-                        <div class="p-6 pt-0 flex-1 flex flex-col">
-                            <p class="text-base text-muted-foreground mb-6 leading-relaxed flex-1">Receipt management
-                                solution for small businesses with quick creation, encrypted storage, and analytics
-                                dashboard.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Spring
-                                    Boot</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">React
-                                    Native</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Analytics</span>
-                            </div>
-                            <a href="https://play.google.com/store/apps/details?id=com.chapterfeed.SmartRaseedMobileApp"
-                                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md w-full bg-transparent mt-auto">View
-                                on Play Store</a>
-                        </div>
-                    </div>
+                    <div class="group rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col transform hover:-translate-y-2 scroll-animate delay-100"><div class="p-6 pb-4"><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center rounded-md border border-transparent bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">Live</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors duration-300"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></div><h3 class="group-hover:text-primary transition-colors text-xl font-semibold tracking-tight">Smart Raseed Mobile App</h3><p class="text-base text-muted-foreground">Spring Boot & React Native</p></div><div class="p-6 pt-0 flex-1 flex flex-col"><p class="text-base text-muted-foreground mb-6 leading-relaxed flex-1">Receipt management solution for small businesses with quick creation, encrypted storage, and analytics dashboard.</p><div class="flex flex-wrap gap-2 mb-6"><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Spring Boot</span><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">React Native</span><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Analytics</span></div><a href="https://play.google.com/store/apps/details?id=com.chapterfeed.SmartRaseedMobileApp" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md w-full bg-transparent mt-auto">View on Play Store</a></div></div>
                     <!-- Project Card 3 -->
-                    <div
-                        class="group rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col md:col-span-2 xl:col-span-1">
-                        <div class="p-6 pb-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <span
-                                    class="inline-flex items-center rounded-md border border-transparent bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">Live</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="h-6 w-6 text-muted-foreground">
-                                    <path d="M15 3h6v6" />
-                                    <path d="M10 14 21 3" />
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                </svg>
-                            </div>
-                            <h3 class="group-hover:text-primary transition-colors text-xl font-semibold tracking-tight">
-                                Truly Mentor Academy</h3>
-                            <p class="text-base text-muted-foreground">Full-Stack Education Platform</p>
-                        </div>
-                        <div class="p-6 pt-0 flex-1 flex flex-col">
-                            <p class="text-base text-muted-foreground mb-6 leading-relaxed flex-1">Complete education
-                                management system with role-based dashboards, fee tracking, attendance, and online
-                                testing modules.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">React</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Spring
-                                    Boot</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Role-based</span>
-                            </div>
-                            <div class="flex gap-3 mt-auto">
-                                <a href="https://trulymentoracademy.com/"
-                                    class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md flex-1 bg-transparent">Web
-                                    App</a>
-                                <a href="https://play.google.com/store/apps/details?id=com.chapterfeed.TMA"
-                                    class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md flex-1 bg-transparent">Mobile
-                                    App</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="group rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col md:col-span-2 xl:col-span-1 transform hover:-translate-y-2 scroll-animate delay-200"><div class="p-6 pb-4"><div class="flex items-center justify-between mb-3"><span class="inline-flex items-center rounded-md border border-transparent bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">Live</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors duration-300"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></div><h3 class="group-hover:text-primary transition-colors text-xl font-semibold tracking-tight">Truly Mentor Academy</h3><p class="text-base text-muted-foreground">Full-Stack Education Platform</p></div><div class="p-6 pt-0 flex-1 flex flex-col"><p class="text-base text-muted-foreground mb-6 leading-relaxed flex-1">Complete education management system with role-based dashboards, fee tracking, attendance, and online testing modules.</p><div class="flex flex-wrap gap-2 mb-6"><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">React</span><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Spring Boot</span><span class="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold">Role-based</span></div><div class="flex gap-3 mt-auto"><a href="https://trulymentoracademy.com/" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md flex-1 bg-transparent">Web App</a><a href="https://play.google.com/store/apps/details?id=com.chapterfeed.TMA" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-9 px-3 rounded-md flex-1 bg-transparent">Mobile App</a></div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section - Skill tags now have a hover effect -->
         <section id="skills" class="py-24 px-4">
             <div class="container mx-auto max-w-5xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Core Skills</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 scroll-animate">Core Skills</h2>
                 <div class="grid lg:grid-cols-2 gap-8">
-                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                        <div class="p-6 pb-6">
-                            <h3 class="flex items-center gap-3 text-2xl font-semibold tracking-tight">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="h-7 w-7 text-primary">
-                                    <path d="m18 16 4-4-4-4" />
-                                    <path d="m6 8-4 4 4 4" />
-                                    <path d="m14.5 4-5 16" />
-                                </svg>
-                                Programming & Frameworks
-                            </h3>
-                        </div>
-                        <div class="p-6 pt-0">
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">Java</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">Spring
-                                    Boot</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">Angular</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">React</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">React
-                                    Native</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">Ionic</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">TypeScript</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">JavaScript</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">HTML</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">CSS</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">Python</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">C</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold">C++</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                        <div class="p-6 pb-6">
-                            <h3 class="flex items-center gap-3 text-2xl font-semibold tracking-tight">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="h-7 w-7 text-primary">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-                                    <path d="m9 12 2 2 4-4" />
-                                </svg>
-                                Tools & Platforms
-                            </h3>
-                        </div>
-                        <div class="p-6 pt-0">
-                            <div class="flex flex-wrap gap-3">
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">Git</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">Postman</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">Firebase</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">Ubuntu</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">Nginx</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">IntelliJ
-                                    IDEA</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">VS
-                                    Code</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">Android
-                                    Studio</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">MySQL</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm scroll-animate"><div class="p-6 pb-6"><h3 class="flex items-center gap-3 text-2xl font-semibold tracking-tight"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-primary"><path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" /></svg>Programming & Frameworks</h3></div><div class="p-6 pt-0"><div class="flex flex-wrap gap-3"><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">Java</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">Spring Boot</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">Angular</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">React</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">React Native</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">Ionic</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">TypeScript</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">JavaScript</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">HTML</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">CSS</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">Python</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">C</span><span class="inline-flex items-center rounded-full border border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 transition-colors duration-300">C++</span></div></div></div>
+                    <div class="rounded-xl border border-border bg-card text-card-foreground shadow-sm scroll-animate delay-200"><div class="p-6 pb-6"><h3 class="flex items-center gap-3 text-2xl font-semibold tracking-tight"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-primary"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="m9 12 2 2 4-4" /></svg>Tools & Platforms</h3></div><div class="p-6 pt-0"><div class="flex flex-wrap gap-3"><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">Git</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">Postman</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">Firebase</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">Ubuntu</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">Nginx</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">IntelliJ IDEA</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">VS Code</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">Android Studio</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">MySQL</span><span class="inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors duration-300">MongoDB</span></div></div></div>
                 </div>
             </div>
         </section>
@@ -534,51 +174,15 @@
         <!-- Contact Section -->
         <section id="contact" class="py-24 px-4 bg-muted/30">
             <div class="container mx-auto max-w-3xl text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8">Let's Work Together</h2>
-                <p class="text-muted-foreground mb-12 text-xl leading-relaxed">Ready to bring your ideas to life? Let's
-                    discuss your next project or training needs.</p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-                    <a href="mailto:Abhishek22021@gmail.com"
-                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 h-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="mr-3 h-5 w-5">
-                            <rect width="20" height="16" x="2" y="4" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
-                        Send Email
-                    </a>
-                    <a href="tel:+919504983374"
-                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-10 py-6 h-auto bg-transparent">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="mr-3 h-5 w-5">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        Call Now
-                    </a>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 scroll-animate">Let's Work Together</h2>
+                <p class="text-muted-foreground mb-12 text-xl leading-relaxed scroll-animate delay-100">Ready to bring your ideas to life? Let's discuss your next project or training needs.</p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12 scroll-animate delay-200">
+                    <a href="mailto:Abhishek22021@gmail.com" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 h-auto transform hover:-translate-y-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 h-5 w-5"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>Send Email</a>
+                    <a href="tel:+919504983374" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-10 py-6 h-auto bg-transparent transform hover:-translate-y-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 h-5 w-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>Call Now</a>
                 </div>
-                <div class="flex justify-center gap-8">
-                    <a href="https://github.com/SE-Ab"
-                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-12 w-12">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-6 w-6">
-                            <path
-                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com/in/se-avi"
-                        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-12 w-12">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-6 w-6">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                            <rect width="4" height="12" x="2" y="9" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                    </a>
+                <div class="flex justify-center gap-8 scroll-animate delay-300">
+                    <a href="https://github.com/SE-Ab" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-12 w-12 hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /></svg></a>
+                    <a href="https://linkedin.com/in/se-avi" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-12 w-12 hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg></a>
                 </div>
             </div>
         </section>
