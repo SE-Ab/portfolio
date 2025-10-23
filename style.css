@@ -1,136 +1,55 @@
 /*
-This file defines the color theme, custom component styles,
-and animations for the portfolio.
+This file defines the modern dark theme and custom animations for the portfolio.
+It uses CSS Custom Properties (variables) that are automatically
+used by the Tailwind CSS framework loaded from the CDN.
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Light Theme (Default) */
-:root {
-    --background: oklch(0.98 0.01 240); /* Off-white */
-    --foreground: oklch(0.15 0.02 240); /* Dark Gray-Blue */
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.15 0.02 240);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.15 0.02 240);
-    --primary: oklch(0.6 0.18 200); /* Vibrant Cyan */
-    --primary-foreground: oklch(0.98 0.01 240);
-    --secondary: oklch(0.94 0.03 240);
-    --secondary-foreground: oklch(0.15 0.02 240);
-    --muted: oklch(0.95 0.02 240);
-    --muted-foreground: oklch(0.4 0.02 240);
-    --accent: oklch(0.96 0.02 240);
-    --accent-foreground: oklch(0.15 0.02 240);
-    --destructive: oklch(0.58 0.25 27);
-    --destructive-foreground: oklch(0.98 0.01 240);
-    --border: oklch(0.9 0.02 240);
-    --input: oklch(0.9 0.02 240);
-    --ring: oklch(0.6 0.18 200 / 0.8);
+@layer base {
+  :root {
+    /* Modern Dark Theme Palette using OKLCH for wide gamut colors */
+    --background: oklch(0.18 0.02 240);          /* Deep, cool dark blue/slate */
+    --foreground: oklch(0.95 0.01 240);         /* Light grey/off-white for text */
+    --card: oklch(0.22 0.025 240);             /* Slightly lighter slate for cards */
+    --card-foreground: oklch(0.95 0.01 240);    /* Text on cards */
+    --popover: oklch(0.15 0.02 240);
+    --popover-foreground: oklch(0.95 0.01 240);
+    --primary: oklch(0.65 0.2 250);            /* Vibrant, modern blue */
+    --primary-foreground: oklch(0.98 0.01 250); /* High-contrast text for primary buttons */
+    --secondary: oklch(0.3 0.03 240);          /* Muted blue/grey for secondary elements */
+    --secondary-foreground: oklch(0.9 0.01 240);
+    --muted: oklch(0.25 0.03 240);
+    --muted-foreground: oklch(0.6 0.01 240);    /* Lighter grey for less important text */
+    --accent: oklch(0.3 0.03 240);             /* For hover effects, same as secondary */
+    --accent-foreground: oklch(0.95 0.01 240);
+    --destructive: oklch(0.58 0.25 25);
+    --destructive-foreground: oklch(0.98 0.01 25);
+    --border: oklch(0.3 0.03 240);
+    --input: oklch(0.3 0.03 240);
+    --ring: oklch(0.65 0.2 250);
     --radius: 0.75rem; /* Corresponds to Tailwind's rounded-xl */
+  }
 }
 
-/* Dark Theme */
-html[data-theme='dark'] {
-    --background: oklch(0.1 0.02 240); /* Dark Blue */
-    --foreground: oklch(0.95 0.02 240); /* Light Gray-Blue */
-    --card: oklch(0.15 0.02 240);
-    --card-foreground: oklch(0.95 0.02 240);
-    --popover: oklch(0.1 0.02 240);
-    --popover-foreground: oklch(0.95 0.02 240);
-    --primary: oklch(0.65 0.18 200); /* Slightly lighter Cyan for dark bg */
-    --primary-foreground: oklch(0.1 0.02 240);
-    --secondary: oklch(0.2 0.02 240);
-    --secondary-foreground: oklch(0.95 0.02 240);
-    --muted: oklch(0.15 0.02 240);
-    --muted-foreground: oklch(0.6 0.02 240);
-    --accent: oklch(0.2 0.02 240);
-    --accent-foreground: oklch(0.95 0.02 240);
-    --destructive: oklch(0.58 0.25 27);
-    --destructive-foreground: oklch(0.95 0.02 240);
-    --border: oklch(0.2 0.02 240);
-    --input: oklch(0.2 0.02 240);
-    --ring: oklch(0.65 0.18 200 / 0.8);
+/* Custom Component Styles using @apply */
+@layer components {
+  .skill-pill {
+    @apply inline-flex items-center rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-300 hover:bg-primary/10 hover:text-primary hover:border-primary/30;
+  }
 }
 
 /* Base styles */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* Text wrapping utilities */
 .text-balance { text-wrap: balance; }
 .text-pretty { text-wrap: pretty; }
 
-/* Custom Cursor */
-#cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.2s ease-out;
-}
-#cursor-outline {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9999;
-    transition: all 0.3s ease-out;
-}
-#cursor-outline.hover {
-    transform: translate(-50%, -50%) scale(1.5);
-    background-color: var(--primary);
-    opacity: 0.3;
-}
-
-/* Reusable Component Styles */
-.nav-link { @apply text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300; }
-.hire-me-btn { @apply items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-6 transform hover:scale-105; }
-.action-btn-primary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 transform hover:-translate-y-1 shadow-lg hover:shadow-primary/40; }
-.action-btn-secondary { @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 bg-transparent transform hover:-translate-y-1; }
-.section-title { @apply text-4xl md:text-5xl font-bold tracking-tight mb-4; }
-.section-subtitle { @apply text-xl text-muted-foreground max-w-2xl mx-auto; }
-.kpi-card { @apply text-center p-6 bg-card rounded-lg border border-border shadow-sm transform hover:-translate-y-2 transition-transform duration-300; }
-.info-card { @apply rounded-lg border border-border bg-card text-card-foreground shadow-sm transform hover:-translate-y-2 transition-transform duration-300; }
-.info-card-header { @apply flex flex-col space-y-1.5 p-6 pb-4; }
-.info-card-header h3 { @apply flex items-center gap-3 text-xl font-semibold leading-none tracking-tight; }
-.social-link { @apply inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent text-muted-foreground hover:text-accent-foreground h-12 w-12 hover:scale-110 border border-border; }
-.tech-tag { @apply inline-flex items-center rounded-full border border-border bg-secondary/50 px-3 py-1 text-sm font-semibold text-secondary-foreground; }
-.skill-badge { @apply inline-flex items-center rounded-full border-2 border-transparent bg-secondary text-secondary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/20 hover:border-primary/50 transition-colors duration-300 cursor-pointer; }
-
-/* Experience Timeline */
-.timeline-item { @apply relative flex items-start gap-8; }
-.timeline-dot { @apply absolute left-1/2 top-2 h-4 w-4 rounded-full bg-primary border-4 border-background -translate-x-1/2; }
-.timeline-date { @apply w-1/2 text-right pr-16 text-muted-foreground font-semibold; }
-.timeline-content { @apply w-1/2 pl-16 pb-8 border-l-2 border-border/0; /* Invisible border to align content */ }
-
-/* Project Card */
-.project-card { @apply group glow-card rounded-lg border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col; }
-.project-title { @apply group-hover:text-primary transition-colors text-xl font-semibold tracking-tight; }
-.status-badge { @apply inline-flex items-center rounded-md border-transparent px-3 py-1 text-xs font-semibold; }
-.project-link { @apply group inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-10 px-3 rounded-md w-full bg-transparent; }
-
-/* Testimonial Card */
-.testimonial-card { @apply rounded-lg border border-border bg-card p-6; }
-
-/* Back to Top Button */
-#back-to-top {
-    @apply fixed bottom-8 right-8 bg-primary text-primary-foreground p-3 rounded-full shadow-lg transition-all duration-300 scale-0 opacity-0;
-}
-#back-to-top.visible {
-    @apply scale-100 opacity-100;
-}
-
-/* Scroll Animation */
+/* Scroll Animation Styles */
 .scroll-animate {
     opacity: 0;
     transform: translateY(30px);
@@ -140,10 +59,18 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Delay Utilities */
 .delay-100 { transition-delay: 100ms; }
 .delay-200 { transition-delay: 200ms; }
 .delay-300 { transition-delay: 300ms; }
 .delay-500 { transition-delay: 500ms; }
+
+/* Dynamic Header Shadow on Scroll */
+header.scrolled {
+    border-bottom-color: transparent;
+    box-shadow: 0 4px 20px -2px oklch(0.65 0.2 250 / 0.1);
+}
 
 /* Glowing Border Effect for Cards */
 .glow-card {
@@ -153,17 +80,23 @@ body {
 .glow-card::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -1px; /* Tighter glow */
     z-index: -1;
-    border-radius: var(--radius);
-    background: conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, #a3e635 180deg, var(--primary) 360deg);
-    filter: blur(12px);
+    border-radius: calc(var(--radius) + 1px);
+    /* Conic gradient using the primary theme color */
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        var(--primary) 0deg,
+        oklch(0.7 0.25 290) 120deg, /* A complementary purplish color */
+        var(--primary) 360deg
+    );
+    filter: blur(16px);
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
 }
 .glow-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px); /* Lift the card slightly */
 }
 .glow-card:hover::before {
-    opacity: 0.3;
+    opacity: 0.15; /* Subtle glow effect */
 }
