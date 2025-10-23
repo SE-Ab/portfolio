@@ -1,48 +1,34 @@
-/*
-This file defines the modern dark theme and custom animations for the portfolio.
-It uses CSS Custom Properties (variables) that are automatically
-used by the Tailwind CSS framework loaded from the CDN.
+/* 
+  This file defines the color theme and custom animations for the portfolio.
+  It uses CSS Custom Properties (variables) that are automatically
+  used by the Tailwind CSS framework loaded from the CDN.
 */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    /* Modern Dark Theme Palette using OKLCH for wide gamut colors */
-    --background: oklch(0.18 0.02 240);          /* Deep, cool dark blue/slate */
-    --foreground: oklch(0.95 0.01 240);         /* Light grey/off-white for text */
-    --card: oklch(0.22 0.025 240);             /* Slightly lighter slate for cards */
-    --card-foreground: oklch(0.95 0.01 240);    /* Text on cards */
-    --popover: oklch(0.15 0.02 240);
-    --popover-foreground: oklch(0.95 0.01 240);
-    --primary: oklch(0.65 0.2 250);            /* Vibrant, modern blue */
-    --primary-foreground: oklch(0.98 0.01 250); /* High-contrast text for primary buttons */
-    --secondary: oklch(0.3 0.03 240);          /* Muted blue/grey for secondary elements */
-    --secondary-foreground: oklch(0.9 0.01 240);
-    --muted: oklch(0.25 0.03 240);
-    --muted-foreground: oklch(0.6 0.01 240);    /* Lighter grey for less important text */
-    --accent: oklch(0.3 0.03 240);             /* For hover effects, same as secondary */
-    --accent-foreground: oklch(0.95 0.01 240);
-    --destructive: oklch(0.58 0.25 25);
-    --destructive-foreground: oklch(0.98 0.01 25);
-    --border: oklch(0.3 0.03 240);
-    --input: oklch(0.3 0.03 240);
-    --ring: oklch(0.65 0.2 250);
-    --radius: 0.75rem; /* Corresponds to Tailwind's rounded-xl */
-  }
-}
-
-/* Custom Component Styles using @apply */
-@layer components {
-  .skill-pill {
-    @apply inline-flex items-center rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors duration-300 hover:bg-primary/10 hover:text-primary hover:border-primary/30;
-  }
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.25 0 0);
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0.3 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0 0);
+  --primary: oklch(0.55 0.15 200); /* A nice cyan/blue */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.03 200); /* A very light blue/gray for secondary elements */
+  --secondary-foreground: oklch(0.25 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.96 0.03 200); /* Similar to secondary, for hover effects */
+  --accent-foreground: oklch(0.25 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.98 0 0);
+  --ring: oklch(0.55 0.15 200);
+  --radius: 0.75rem; /* This corresponds to Tailwind's rounded-xl */
 }
 
 /* Base styles */
 body {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* Text wrapping utilities */
@@ -51,13 +37,13 @@ body {
 
 /* Scroll Animation Styles */
 .scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .scroll-animate.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Delay Utilities */
@@ -68,35 +54,57 @@ body {
 
 /* Dynamic Header Shadow on Scroll */
 header.scrolled {
-    border-bottom-color: transparent;
-    box-shadow: 0 4px 20px -2px oklch(0.65 0.2 250 / 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-bottom-color: var(--border);
 }
 
 /* Glowing Border Effect for Cards */
 .glow-card {
-    position: relative;
-    transition: transform 0.3s ease-out;
+  position: relative;
+  transition: transform 0.3s ease-out;
 }
+
 .glow-card::before {
-    content: "";
-    position: absolute;
-    inset: -1px; /* Tighter glow */
-    z-index: -1;
-    border-radius: calc(var(--radius) + 1px);
-    /* Conic gradient using the primary theme color */
-    background: conic-gradient(
-        from 180deg at 50% 50%,
-        var(--primary) 0deg,
-        oklch(0.7 0.25 290) 120deg, /* A complementary purplish color */
-        var(--primary) 360deg
-    );
-    filter: blur(16px);
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+  content: "";
+  position: absolute;
+  inset: -2px; 
+  z-index: -1;
+  border-radius: calc(var(--radius) + 2px);
+  
+  /* Conic gradient using colors from your hero image/theme */
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #a3e635 0deg, /* Lime Green */
+    var(--primary) 120deg,
+    #a3e635 360deg
+  );
+  
+  filter: blur(14px);
+  
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
 }
+
 .glow-card:hover {
-    transform: translateY(-5px); /* Lift the card slightly */
+  transform: translateY(-4px); /* Lift the card slightly */
 }
+
 .glow-card:hover::before {
-    opacity: 0.15; /* Subtle glow effect */
+  opacity: 0.6; /* Fade the glow in */
+}
+
+/* Project Card Expansion */
+.expandable-content.expanded {
+    max-height: 1000px; /* A large enough value */
+    opacity: 1;
+}
+
+.chevron-icon.rotated {
+    transform: rotate(180deg);
+}
+
+/* Scroll to top button visibility */
+#scroll-to-top-btn.visible {
+    opacity: 1;
+    transform: scale(1);
 }
