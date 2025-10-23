@@ -1,245 +1,103 @@
-/* === [ TABLE OF CONTENTS ] ===
-1.  CSS Variables & Reset
-2.  Global Styles & Utilities
-3.  Header & Navigation
-4.  Hero Section
-5.  General Section & Card Styles
-6.  About Section
-7.  Experience Section
-8.  Projects Section
-9.  Skills Section
-10. Contact & Footer
-11. Animations & Effects
-12. Responsive Media Queries
-============================== */
-
-/* === 1. CSS Variables & Reset === */
+/* 
+  This file defines the color theme and custom animations for the portfolio.
+  It uses CSS Custom Properties (variables) that are automatically
+  used by the Tailwind CSS framework loaded from the CDN.
+*/
 :root {
-    --background: oklch(0.18 0.02 240);
-    --foreground: oklch(0.95 0.01 240);
-    --card: oklch(0.22 0.025 240);
-    --primary: oklch(0.65 0.2 250);
-    --primary-foreground: oklch(0.98 0.01 250);
-    --secondary: oklch(0.3 0.03 240);
-    --muted: oklch(0.20 0.02 240);
-    --muted-foreground: oklch(0.6 0.01 240);
-    --border: oklch(0.3 0.03 240);
-    --radius: 0.75rem;
-    --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --background: oklch(0.17 0.015 230); /* Dark Slate Blue */
+  --foreground: oklch(0.92 0.01 230); /* Light Grey */
+  --card: oklch(0.21 0.015 230); /* Slightly lighter Slate Blue */
+  --card-foreground: oklch(0.88 0.01 230); /* Off-white */
+  --popover: oklch(0.15 0.015 230);
+  --popover-foreground: oklch(0.92 0.01 230);
+  --primary: oklch(0.75 0.17 195); /* Bright Cyan */
+  --primary-foreground: oklch(0.1 0.01 230); /* Dark color for text on primary bg */
+  --secondary: oklch(0.25 0.02 230);
+  --secondary-foreground: oklch(0.9 0.01 230);
+  --muted: oklch(0.25 0.02 230);
+  --muted-foreground: oklch(0.65 0.01 230); /* Softer grey for muted text */
+  --accent: oklch(0.3 0.02 230);
+  --accent-foreground: oklch(0.92 0.01 230);
+  --destructive: oklch(0.6 0.22 25); /* Muted Red */
+  --destructive-foreground: oklch(0.95 0.01 25);
+  --border: oklch(0.3 0.02 230);
+  --input: oklch(0.3 0.02 230);
+  --ring: oklch(0.75 0.17 195); /* Same as primary */
+  --radius: 0.75rem; /* This corresponds to Tailwind's rounded-xl */
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+/* Base styles */
 body {
-    font-family: var(--font-sans);
-    background-color: var(--background);
-    color: var(--foreground);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* === 2. Global Styles & Utilities === */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+/* Text wrapping utilities */
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* Scroll Animation Styles */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.container-medium { max-width: 900px; }
-.container-small { max-width: 700px; }
-
-.text-primary { color: var(--primary); }
-.text-center { text-align: center; }
-
-h1, h2, h3, h4 {
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); }
-h2 { font-size: clamp(2rem, 4vw + 1rem, 3rem); }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.25rem; }
-p { margin-bottom: 1.5rem; color: var(--muted-foreground); }
-a { color: var(--primary); text-decoration: none; }
-
-.grid {
-    display: grid;
-    gap: 2rem;
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.space-y-large > *:not(:last-child) { margin-bottom: 2rem; }
-.space-y-xlarge > *:not(:last-child) { margin-bottom: 3rem; }
-
-/* === 3. Header & Navigation === */
-header.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    border-bottom: 1px solid var(--border);
-    background-color: color-mix(in srgb, var(--background) 95%, transparent);
-    backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
-}
-header.scrolled {
-    border-bottom-color: transparent;
-    box-shadow: 0 4px 20px -2px oklch(0.65 0.2 250 / 0.1);
-}
-.header-container {
-    display: flex;
-    height: 4.5rem;
-    align-items: center;
-    justify-content: space-between;
-}
-.logo { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; color: var(--foreground); }
-.logo-initials { height: 2.5rem; width: 2.5rem; border-radius: 50%; background-color: var(--primary); color: var(--primary-foreground); display: grid; place-content: center; }
-.main-nav { display: none; }
-.main-nav a { color: var(--muted-foreground); font-weight: 500; transition: color 0.3s ease; }
-.main-nav a:hover { color: var(--primary); }
-.hire-me-btn { display: none; }
-
-/* Mobile Menu */
-.menu-btn { display: block; padding: 0.5rem; border-radius: 0.5rem; background: none; border: none; cursor: pointer; color: var(--foreground); }
-.menu-btn:hover { background-color: var(--muted); }
-.mobile-nav { display: none; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
-.mobile-nav.active { display: block; }
-.mobile-nav nav { display: flex; flex-direction: column; gap: 0.5rem; }
-.mobile-nav a { padding: 0.75rem 0; color: var(--muted-foreground); font-weight: 500; }
-
-/* === 4. Hero Section === */
-.hero-section { padding: 5rem 0; }
-.hero-grid {
-    display: grid;
-    gap: 4rem;
-    align-items: center;
-}
-.hero-content { text-align: center; }
-.hero-content h1 { text-wrap: balance; }
-.hero-content p { font-size: 1.25rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.hero-buttons { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
-.hero-contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; color: var(--muted-foreground); }
-.info-item { display: flex; align-items: center; gap: 0.5rem; }
-.info-item svg { color: var(--primary); height: 1.25rem; width: 1.25rem; }
-.hero-image-container { position: relative; display: grid; place-items: center; }
-.hero-blob { position: absolute; width: 100%; height: 100%; opacity: 0.2; z-index: -1; }
-.hero-image { width: 18rem; height: 18rem; border-radius: 50%; object-fit: cover; border: 4px solid var(--card); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-
-/* === 5. General Section & Card Styles === */
-.section { padding: 6rem 0; }
-.bg-muted { background-color: var(--muted); }
-.section-title { text-align: center; margin-bottom: 4rem; }
-
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; font-weight: 600; padding: 0.75rem 2rem; border-radius: 0.5rem; border: 2px solid transparent; transition: all 0.3s ease; cursor: pointer; }
-.btn-primary { background-color: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
-.btn-primary:hover { background-color: color-mix(in srgb, var(--primary) 90%, black); }
-.btn-secondary { background-color: transparent; color: var(--foreground); border-color: var(--border); }
-.btn-secondary:hover { background-color: var(--secondary); border-color: var(--secondary); }
-.btn:hover { transform: translateY(-3px); }
-
-.card {
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.card h3, .card h4 { display: flex; align-items: center; gap: 0.75rem; color: var(--foreground); }
-.card h3 svg, .card h4 svg { color: var(--primary); width: 1.75rem; height: 1.75rem; }
-
-/* === 6. About Section === */
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-.stat-card { background-color: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; transition: transform 0.3s ease; }
-.stat-card:hover { transform: translateY(-5px); }
-.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
-.stat-label { font-size: 0.875rem; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.05em; }
-.info-card { background-color: var(--background); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; transition: transform 0.3s ease; }
-.info-card:hover { transform: translateY(-5px); }
-
-/* === 7. Experience Section === */
-.experience-header { display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-.date-badge { display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--secondary); color: var(--foreground); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; align-self: flex-start; }
-.card ul { list-style: none; padding-left: 0; }
-.card ul li { position: relative; padding-left: 1.5rem; margin-bottom: 1rem; color: var(--muted-foreground); }
-.card ul li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 0.5rem; height: 0.5rem; background-color: var(--primary); border-radius: 50%; }
-
-/* === 8. Projects Section === */
-.project-card { display: flex; flex-direction: column; height: 100%; transition: border-color 0.3s ease; }
-.project-card:hover { border-color: var(--primary); }
-.project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.project-header svg { color: var(--muted-foreground); transition: color 0.3s ease; }
-.project-card:hover .project-header svg { color: var(--primary); }
-.status-badge { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; border: 2px solid; }
-.status-badge.live { color: #6ee7b7; border-color: #6ee7b750; background-color: #6ee7b710; }
-.status-badge.dev { color: #facc15; border-color: #facc1550; background-color: #facc1510; }
-.project-subtitle { font-size: 0.9rem; margin-bottom: 1rem; }
-.project-description { flex-grow: 1; margin-bottom: 1.5rem; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
-.project-btn, .project-buttons { margin-top: 1.5rem; width: 100%; }
-.project-buttons { display: flex; gap: 1rem; }
-
-/* === 9. Skills Section === */
-.skills-container { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-.skill-pill { display: inline-flex; align-items: center; background-color: var(--background); border: 1px solid var(--border); color: var(--muted-foreground); padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; }
-.skill-pill:hover { background-color: color-mix(in srgb, var(--primary) 10%, transparent); color: var(--primary); border-color: color-mix(in srgb, var(--primary) 30%, transparent); }
-
-/* === 10. Contact & Footer === */
-.contact-buttons { display: flex; flex-direction: column; gap: 1rem; justify-content: center; margin-top: 2rem; margin-bottom: 2rem; }
-.social-links { display: flex; justify-content: center; gap: 1.5rem; }
-.social-links a { color: var(--muted-foreground); transition: all 0.3s ease; }
-.social-links a:hover { color: var(--primary); transform: scale(1.1); }
-.social-links svg { width: 1.75rem; height: 1.75rem; }
-
-footer.site-footer { padding: 3rem 0; border-top: 1px solid var(--border); }
-footer p { margin-bottom: 0.5rem; color: var(--muted-foreground); }
-
-/* === 11. Animations & Effects === */
-.scroll-animate { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.scroll-animate.is-visible { opacity: 1; transform: translateY(0); }
+/* Delay Utilities */
 .delay-100 { transition-delay: 100ms; }
 .delay-200 { transition-delay: 200ms; }
 .delay-300 { transition-delay: 300ms; }
 .delay-500 { transition-delay: 500ms; }
 
-.glow-card { position: relative; transition: transform 0.3s ease-out; }
-.glow-card::before { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: calc(var(--radius) + 1px); background: conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, oklch(0.7 0.25 290) 120deg, var(--primary) 360deg); filter: blur(16px); opacity: 0; transition: opacity 0.4s ease-in-out; }
-.glow-card:hover { transform: translateY(-5px); }
-.glow-card:hover::before { opacity: 0.15; }
-
-/* === 12. Responsive Media Queries === */
-@media (min-width: 640px) { /* sm */
-    .contact-buttons { flex-direction: row; }
-    .hero-buttons { flex-direction: row; justify-content: center; }
+/* Dynamic Header Shadow on Scroll */
+header.scrolled {
+  box-shadow: 0 4px 20px -2px oklch(0.75 0.17 195 / 0.1);
+  border-bottom-color: transparent;
 }
 
-@media (min-width: 768px) { /* md */
-    .main-nav { display: flex; gap: 2rem; }
-    .hire-me-btn { display: inline-flex; }
-    .menu-btn { display: none; }
-    .grid-cols-2-md { grid-template-columns: repeat(2, 1fr); }
-    .experience-header { flex-direction: row; align-items: flex-start; }
-    .project-card.md-col-span-2 { grid-column: span 2; }
+/* Interactive Card Hover Effect */
+.glow-card {
+  /* The base shadow is applied via Tailwind's `shadow-sm` class in the HTML */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
-@media (min-width: 1024px) { /* lg */
-    .hero-grid { grid-template-columns: 1fr 0.8fr; gap: 2rem; }
-    .hero-content { text-align: left; }
-    .hero-content p { margin-left: 0; margin-right: 0; }
-    .hero-buttons, .hero-contact-info { justify-content: flex-start; }
-    .hero-image { width: 22rem; height: 22rem; }
-    .grid-cols-2-lg { grid-template-columns: repeat(2, 1fr); }
+.glow-card:hover {
+  transform: translateY(-4px); /* Lift the card slightly */
+  /* A larger, softer shadow with a hint of the primary color for an "illuminated" feel */
+  box-shadow: 0 10px 30px -8px oklch(from var(--primary) l c h / 0.25);
 }
 
-@media (min-width: 1280px) { /* xl */
-    .grid-cols-3-xl { grid-template-columns: repeat(3, 1fr); }
+
+/* Project Card Expansion */
+.expandable-content {
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.expandable-content.expanded {
+    max-height: 1000px; /* A large enough value */
+    opacity: 1;
+}
+
+.chevron-icon {
+    transition: transform 0.3s ease-in-out;
+}
+.chevron-icon.rotated {
+    transform: rotate(180deg);
+}
+
+#scroll-to-top-btn {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Scroll to top button visibility */
+#scroll-to-top-btn.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#scroll-to-top-btn:not(.visible) {
+    opacity: 0;
+    transform: scale(0);
 }
