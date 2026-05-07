@@ -1,96 +1,112 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // --- Mobile Menu Logic ---
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const navLinks = document.querySelectorAll("#mobile-menu a, #desktop-nav a");
+const header = document.querySelector("[data-header]");
+const nav = document.querySelector("[data-nav]");
+const navToggle = document.querySelector("[data-nav-toggle]");
+const navLinks = [...document.querySelectorAll(".site-nav a")];
+const revealItems = document.querySelectorAll(".reveal");
+const tiltCards = document.querySelectorAll(".tilt-card");
+const magneticItems = document.querySelectorAll(".magnetic");
+const year = document.querySelector("[data-year]");
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-      menuBtn.setAttribute("aria-expanded", !isExpanded);
-      mobileMenu.classList.toggle("hidden");
-    });
-  }
+year.textContent = new Date().getFullYear();
 
-  // Close mobile menu when a link is clicked
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
-        mobileMenu.classList.add("hidden");
-        menuBtn.setAttribute("aria-expanded", "false");
-      }
-    });
-  });
+const closeMenu = () => {
+  nav.classList.remove("is-open");
+  navToggle.classList.remove("is-open");
+  navToggle.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("nav-open");
+};
 
-  // --- Dynamic Header on Scroll ---
-  const header = document.querySelector("header");
-  if (header) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 10) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
-  }
+navToggle.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("is-open");
+  navToggle.classList.toggle("is-open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  document.body.classList.toggle("nav-open", isOpen);
+});
 
-  // --- Scroll Animation Logic ---
-  const animatedElements = document.querySelectorAll(".scroll-animate");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.1, // Trigger when 10% of the element is visible
-    }
-  );
-  animatedElements.forEach((element) => {
-    observer.observe(element);
-  });
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const target = document.querySelector(link.getAttribute("href"));
 
-  // --- Project Card Expansion Logic ---
-  const projectCards = document.querySelectorAll(".project-card");
-  projectCards.forEach((card) => {
-    const readMoreBtn = card.querySelector(".read-more-btn");
-    const btnText = readMoreBtn.querySelector("span");
-    const expandableContent = card.querySelector(".expandable-content");
-    const chevronIcon = card.querySelector(".chevron-icon");
-
-    if (readMoreBtn && expandableContent && chevronIcon && btnText) {
-      readMoreBtn.addEventListener("click", () => {
-        const isExpanded = readMoreBtn.getAttribute("aria-expanded") === "true";
-        readMoreBtn.setAttribute("aria-expanded", !isExpanded);
-
-        expandableContent.classList.toggle("expanded");
-        chevronIcon.classList.toggle("rotated");
-        btnText.textContent = isExpanded ? "Read More" : "Read Less";
-      });
+    if (target) {
+      event.preventDefault();
+      closeMenu();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
+});
 
-  // --- Scroll-to-Top Button Logic ---
-  const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
-  if (scrollToTopBtn) {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add("visible");
-      } else {
-        scrollToTopBtn.classList.remove("visible");
-      }
-    };
+window.addEventListener("scroll", () => {
+  header.classList.toggle("is-scrolled", window.scrollY > 18);
+});
 
-    window.addEventListener("scroll", toggleVisibility);
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-    scrollToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
+      navLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
       });
     });
+  },
+  {
+    rootMargin: "-35% 0px -55% 0px",
+    threshold: 0
   }
+);
+
+document.querySelectorAll("main section[id]").forEach((section) => sectionObserver.observe(section));
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.14 }
+);
+
+revealItems.forEach((item, index) => {
+  item.style.transitionDelay = `${Math.min(index % 4, 3) * 80}ms`;
+  revealObserver.observe(item);
+});
+
+window.addEventListener("pointermove", (event) => {
+  document.documentElement.style.setProperty("--cursor-x", `${event.clientX}px`);
+  document.documentElement.style.setProperty("--cursor-y", `${event.clientY}px`);
+});
+
+tiltCards.forEach((card) => {
+  card.addEventListener("pointermove", (event) => {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rotateX = ((y / rect.height) - 0.5) * -6;
+    const rotateY = ((x / rect.width) - 0.5) * 6;
+
+    card.style.setProperty("--mx", `${x}px`);
+    card.style.setProperty("--my", `${y}px`);
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+  });
+
+  card.addEventListener("pointerleave", () => {
+    card.style.transform = "";
+  });
+});
+
+magneticItems.forEach((item) => {
+  item.addEventListener("pointermove", (event) => {
+    const rect = item.getBoundingClientRect();
+    const x = event.clientX - rect.left - rect.width / 2;
+    const y = event.clientY - rect.top - rect.height / 2;
+
+    item.style.transform = `translate(${x * 0.12}px, ${y * 0.18}px)`;
+  });
+
+  item.addEventListener("pointerleave", () => {
+    item.style.transform = "";
+  });
 });
