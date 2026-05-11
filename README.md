@@ -1,4 +1,4 @@
-# Freelance Portfolio
+# Full Stack Engineer Portfolio
 
 Client-focused static portfolio for a full-stack and mobile app developer.
 

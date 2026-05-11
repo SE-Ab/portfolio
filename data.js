@@ -5,7 +5,7 @@ window.PORTFOLIO_DATA = {
     email: "abhishek22021@gmail.com",
     whatsapp: "+91 9504983374",
     linkedin: "https://linkedin.com/in/se-avi",
-    location: "Available for remote freelance projects",
+    location: "Full Stack Engineer with 3+ Years at Chapterfeed Learning Space Private Limited",
     photo: "per.jpg"
   },
   heroServices: [
