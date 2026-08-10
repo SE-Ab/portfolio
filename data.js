@@ -1,108 +1,82 @@
 window.PORTFOLIO_DATA = {
   profile: {
     name: "Abhishek Kumar Singh",
-    title: "Full-Stack and Mobile App Developer",
+    title: "Full Stack Engineer",
     email: "abhishek22021@gmail.com",
     whatsapp: "+91 9504983374",
     linkedin: "https://linkedin.com/in/se-avi",
-    location: "Full Stack Engineer with 3+ Years at Chapterfeed Learning Space Private Limited",
-    photo: "per.jpg"
+    github: "https://github.com/SE-Ab",
+    location: "Patna, Bihar, India",
+    currentRole: "Full Stack Engineer at Chapterfeed Learning Space Pvt. Ltd.",
+    summary: "Full Stack Engineer with 3+ years of experience owning production applications end-to-end across backend, web, mobile, cloud deployment, and applied AI.",
+    education: "MS in Artificial Intelligence and Cybersecurity at IIT Patna, Jan 2026 - Dec 2027 expected",
+    photo: "per.jpg",
+    cv: "Abhishek_Full_Stack_Engineer_CV.pdf"
   },
-  heroServices: [
-    ["Start to deployment", "Planning, build, server setup, release, and support"],
-    ["Web and mobile apps", "Static websites, custom web apps, dashboards, and apps"],
-    ["Backend and cloud", "APIs, databases, cloud servers, domains, and deployment"],
-    ["Launch handover", "Setup notes, launch support, and practical post-launch help"]
+  highlights: [
+    "7 production applications owned end to end",
+    "150+ daily active users across deployed platforms",
+    "8+ backend services with microservice deployment patterns",
+    "Reusable auth, OTP, file, notification, and security modules across 5+ apps",
+    "Gemini and Groq integrations for chatbots, coding assistants, prediction, and recommendations",
+    "VPS operations with Docker, Kubernetes, Nginx, CI/CD, monitoring, backups, and validation"
   ],
-  trustPoints: [
-    "Start-to-deployment delivery",
-    "Cloud server handling",
-    "Static sites, web apps, and mobile apps"
-  ],
-  services: [
+  projects: [
     {
-      icon: "monitor-smartphone",
-      title: "Static Websites to Custom Apps",
-      text: "Business websites, landing pages, custom dashboards, portals, and full web apps based on the client workflow."
+      title: "VP Dental Hospital",
+      year: "2026",
+      type: "Healthcare Management Platform",
+      badge: "VP",
+      summary: "Angular public website, role-based administration portal, and 8-module Spring Boot microservices backend.",
+      stack: ["Angular", "Spring Boot", "MongoDB", "Redis", "Nginx"]
     },
     {
-      icon: "smartphone",
-      title: "Mobile App Development",
-      text: "Mobile apps for education, receipts, business tools, internal teams, and customer-facing workflows."
+      title: "InAppCode",
+      year: "2026",
+      type: "AI Coding Practice Platform",
+      badge: "IC",
+      summary: "React Native mobile coding platform with FastAPI code evaluation, Groq/Gemini fallback, adaptive difficulty, streaks, and Docker/Kubernetes deployment.",
+      stack: ["React Native", "TypeScript", "FastAPI", "Groq", "Gemini", "Kubernetes"]
     },
     {
-      icon: "server-cog",
-      title: "Backend and Admin Systems",
-      text: "Secure APIs, databases, authentication, file flows, reports, and role-based admin dashboards."
+      title: "TrulyMentorAcademy",
+      year: "2023 - Present",
+      type: "Academic Management Platform",
+      badge: "TM",
+      summary: "Production academic management platform used by 100+ daily active students, teachers, and administrators across web and mobile.",
+      stack: ["React", "Expo", "Spring Boot", "MongoDB", "Redis", "WebSocket"]
     },
     {
-      icon: "cloud",
-      title: "Cloud Server and Deployment",
-      text: "Server setup, environment configuration, static hosting, app deployment, domain support, and launch handover."
-    }
-  ],
-  productionProjects: [
-    {
-      title: "Truly Mentor Academy",
-      type: "Mobile App and Web App",
-      status: "Client project",
-      logo: "assets/logos/tma.png",
-      summary: "Education platform for academy operations across mobile, web, and backend services.",
-      evidence: "Expo mobile app, Vite React web app, and Spring Boot modules for auth, fees, academics, study material, and chat.",
-      features: ["Student, teacher, admin roles", "Attendance and reports", "Fee records", "Study material", "Chat and notifications"],
-      stack: ["Expo", "React", "TypeScript", "Spring Boot", "MongoDB", "WebSocket"]
-    },
-    {
-      title: "ToonsCode",
-      type: "Web App - AI Software Trainer",
-      status: "Client project",
-      logo: "assets/logos/toonscode.png",
-      summary: "Coding education web app with lessons, quizzes, code practice, and AI-assisted learning flows.",
-      evidence: "Vite React frontend with Monaco editor, lesson chat, quizzes, dashboard, onboarding, and protected routes.",
-      features: ["Learning dashboard", "Monaco code editor", "Quiz flow", "Lesson chatbot", "Protected routes"],
-      stack: ["React", "TypeScript", "Vite", "Chakra UI", "Monaco", "Zustand"]
-    },
-    {
-      title: "Smart Raseed",
-      type: "Mobile App",
-      status: "Client project",
-      logo: "assets/logos/smartraseed.png",
-      summary: "Receipt management app for small businesses to create, store, share, and review receipts.",
-      evidence: "Expo Router screens for auth, receipt generation, receipt detail, history, analytics, profile, and business setup.",
-      features: ["Receipt generation", "PDF/share flow", "Business profile", "History", "Analytics"],
-      stack: ["Expo", "React Native", "TypeScript", "React Query", "SecureStore", "Zustand"]
+      title: "SmartRaseed",
+      year: "2024 - Present",
+      type: "Digital Receipt and Business Management Platform",
+      badge: "SR",
+      summary: "Receipt platform for local businesses with 1,000+ generated receipts, PDF downloads, public links, WhatsApp sharing, QR flows, and analytics.",
+      stack: ["Expo", "Spring Boot", "MongoDB", "JWT", "PDF"]
     },
     {
       title: "College Bazaar",
-      type: "Web App",
-      status: "Client project",
-      logo: "assets/logos/college-bazaar.png",
-      summary: "College discovery and admission-support platform with frontend, backend, search, content, and inquiry workflows.",
-      evidence: "React/Vite frontend, FastAPI backend, MongoDB driver, auth, tests, college/exam modules, and predictor logic.",
-      features: ["College search", "Exam content", "Admission predictor", "Inquiry capture", "Admin/content flows"],
-      stack: ["React", "Vite", "FastAPI", "MongoDB", "JWT", "Vitest"]
+      year: "2025 - 2026",
+      type: "Admission and Career Guidance",
+      badge: "CB",
+      summary: "React, FastAPI, and MongoDB platform for college discovery, comparisons, scholarships, exams, content management, and AI-assisted prediction.",
+      stack: ["React", "FastAPI", "MongoDB", "Groq"]
+    },
+    {
+      title: "ToonsCode",
+      year: "2024 - Present",
+      type: "Coding Institute Website and Learning Portal",
+      badge: "TC",
+      summary: "React/TypeScript, FastAPI, MongoDB, Redis, and WebSocket platform for course discovery, inquiries, admissions, blogs, SEO pages, and admin workflows.",
+      stack: ["React", "TypeScript", "FastAPI", "MongoDB", "Redis"]
     }
   ],
-  strengths: [
-    ["badge-check", "Project proof", "The portfolio highlights shipped work and real delivery capability instead of unfinished project counts."],
-    ["folders", "Real project depth", "The portfolio references actual workspace structure: apps, APIs, dashboards, services, tests, and modules."],
-    ["monitor-smartphone", "Full product delivery", "I can connect web, mobile, backend, database, dashboard, cloud server, and deployment concerns together."],
-    ["messages-square", "Clear communication", "Project scope, current status, and next steps are explained plainly instead of oversold."]
-  ],
-  process: [
-    ["Understand", "We define the business goal, users, workflows, and required screens."],
-    ["Plan", "I map features, data, roles, APIs, and delivery phases clearly."],
-    ["Build", "I implement the frontend, mobile app, backend, dashboard, or integration."],
-    ["Review", "We test core flows, fix gaps, and polish the UI for real users."],
-    ["Deploy", "I set up hosting or cloud server pieces, configure environments, and support launch."],
-    ["Support", "I prepare handover, setup notes, fixes, and next-step support after delivery."]
-  ],
   skills: {
-    Frontend: ["React", "TypeScript", "JavaScript", "Angular", "Vite", "Tailwind", "Bootstrap", "Chakra UI"],
-    Backend: ["Spring Boot", "FastAPI", "REST APIs", "JWT Auth", "Role-Based Access", "WebSocket", "PDF generation"],
-    Mobile: ["React Native", "Expo", "Expo Router", "SecureStore", "Push Notifications", "Mobile Forms", "File Sharing"],
-    Database: ["MongoDB", "Spring Data MongoDB", "Motor", "Redis basics", "Data Modeling"],
-    Quality: ["Git", "Postman", "Jest", "Vitest", "Karma/Jasmine", "API tests"],
-    Deployment: ["Cloud Server", "Static Hosting", "Vite Builds", "Gunicorn/Uvicorn", "Nginx", "Docker", "EAS Builds"]
+    Languages: ["Java", "Python", "C++", "JavaScript", "TypeScript"],
+    Frontend: ["React", "Angular", "React Native", "Expo", "Vite"],
+    Backend: ["Spring Boot", "FastAPI", "REST APIs", "Spring Security", "Spring Cloud Gateway", "Microservices"],
+    DataRealtime: ["MongoDB", "Redis", "MySQL", "Firebase", "WebSockets/STOMP"],
+    AI: ["Gemini AI", "Groq", "LLM Integration", "AI Chatbots", "Recommendation Systems"],
+    DevOps: ["Docker", "Kubernetes", "Nginx", "Linux", "Hostinger VPS", "CI/CD", "Git/GitHub"]
   }
 };
