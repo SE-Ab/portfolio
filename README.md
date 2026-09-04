@@ -1,65 +1,47 @@
-# Full Stack Engineer Portfolio
+# Abhishek Kumar Singh — Java Backend / Full Stack Engineer Portfolio
 
-Client-focused static portfolio for a full-stack and mobile app developer.
+Live portfolio for Abhishek Kumar Singh, focused on Java backend and Java full-stack engineering roles.
 
-## Purpose
+## Positioning
 
-This portfolio is designed to help clients quickly understand:
+- 3+ years of hands-on software engineering experience
+- Java 17, Spring Boot, Spring Security, REST APIs and microservices
+- React, Angular, Next.js, React Native/Expo and TypeScript
+- MongoDB, MySQL, Redis and WebSockets/STOMP
+- JUnit, Mockito, pytest and Playwright
+- Docker, Linux/Ubuntu and Nginx deployment workflows
+- MS in Artificial Intelligence and Cybersecurity at IIT Patna
 
-- What services are available
-- What business problems the projects solve
-- Which projects are most relevant
-- What technologies are used
-- How to start a project inquiry
+## Current Product Work
 
-## Stack
+The portfolio intentionally presents only the five current professional/product projects:
+
+1. VP Dental Hospital
+2. TrulyMentor Academy
+3. InAppCode
+4. SmartRaseed
+5. College Bazaar — in development
+
+Experimental, assignment and learning repositories are intentionally excluded from the professional project section.
+
+## Portfolio Stack
 
 - Static HTML
-- Custom CSS in `style.css`
-- Vanilla JavaScript in `script.js`
+- Custom CSS
+- Vanilla JavaScript
+- GitHub Pages deployment
 
-## Project Structure
+## Files
 
 ```text
 portfolio/
   index.html
   style.css
   script.js
+  data.js
   per.jpg
-  assets/
-    logos/
-    projects/
 ```
 
-## Edit Content
+## Content Policy
 
-Update `index.html` and `script.js` for:
-
-- Name
-- Email
-- WhatsApp number
-- LinkedIn URL
-- GitHub URL
-- Project descriptions
-- Contact form email address
-
-## Run Locally
-
-No build step is required.
-
-Open `index.html` directly, or run a local static server:
-
-```bash
-cd portfolio
-python -m http.server 5500
-```
-
-Then open:
-
-```text
-http://localhost:5500
-```
-
-## Deployment
-
-This is a static website. You can deploy it to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any static hosting provider.
+Portfolio claims should stay consistent with the current master resumes and current repository evidence. Avoid unsupported user counts, performance percentages, uptime claims or production-infrastructure claims that cannot be clearly demonstrated.
